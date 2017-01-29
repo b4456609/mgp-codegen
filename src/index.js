@@ -6,16 +6,9 @@ app.get('/', function(req, res) {
   var snippet = new HTTPSnippet({method: req.query.method, url: req.query.url});
 
   res.send({
-    java: {
-      okhttp: snippet.convert('java', 'okhttp'),
-      unirest: snippet.convert('java', 'unirest')
-    },
+    java: snippet.convert('java', 'okhttp'),
     curl: snippet.convert('shell', 'curl'),
-    js: snippet.convert('js', 'jquery'),
-    node: {
-      request: snippet.convert('node', 'request'),
-      unirest: snippet.convert('node', 'unirest'),
-    }
+    node: snippet.convert('node', 'request')
   });
 })
 
